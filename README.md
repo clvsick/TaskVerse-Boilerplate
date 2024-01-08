@@ -1,6 +1,4 @@
-[]: # README.md
-
-## TaskVerse-Boilerplate - Tasks Application - implementacion CI/CD para automatizar las pruebas y el despliegue.
+## TaskVerse-Boilerplate - Tasks Application - Implementación CI/CD para automatizar las pruebas y el despliegue.
 
 Se trata de una implementación de CI/CD para automatizar las pruebas y el despliegue de mi aplicación la cual permite al usuario interactuar con la aplicación creando tareas y registrandolas en una base de datos MongoDB con la librería [mongoose](https://mongoosejs.com/) que se encarga de la persistencia de los datos. 
 
@@ -15,6 +13,7 @@ Para poder ver mejor la secuencia de los pasos de la aplicación, he creado un d
 
 ```mermaid
 sequenceDiagram
+    title TaskVerse-Boilerplate - Sequence Diagram
 
     participant Usuario as Usuario (Frontend)
     participant API as Servidor API (Backend)
@@ -85,12 +84,30 @@ TaskVerse-Boilerplate
         ├── reportWebVitals.js
         └── setupTests.js
 ```
+---
+
+## Guia para la clonación del proyecto.
+
+Para clonar el proyecto, se puede usar el siguiente enlace:
+```
+https://github.com/alexanderfarias/TaskVerse-Boilerplate.git
+```
+
+
+
+
+
+
+
 
 ---
-## Descripción
-A demonstration of Docker to implement a simple 3 tier architecture
 
-* frontend will be able to access the mid-tier
-* mid-tier will be able to access the db
+## Criterios del proyecto.
 
-In order to run this in docker, simply type ```docker-compose up``` at the command prompt. Docker will then create the [MongoDB](https://www.mongodb.com/) from the stock [mongo](https://hub.docker.com/_/mongo) image. The api uses [nodejs](https://nodejs.org/) with [express](http://expressjs.com/) and is built from a [node:alpine](https://hub.docker.com/_/node) image. The front end uses [ReactJS](https://reactjs.org/) and built from a [node:alpine](https://hub.docker.com/_/node) image.
+- [ ] La aplicación puede ser desarrollada en cualquier lenguaje web como Python, Node.js, PHP, entre otros.
+- [ ] Requiere un sistema de integración continua utilizando repositorios públicos en plataformas como GitHub, Bitbucket, u otras.
+- [ ] Las aplicaciones deben estar dockerizadas, permitiendo la opción de utilizar tres contenedores distintos para frontend, backend y base de datos o un enfoque simplificado con un único contenedor.
+- [ ] Emplea un orquestador de contenedores como Docker Swarm, Docker Compose o Kubernetes, con capacidad de ejecución local para verificar su funcionamiento.
+- [ ] Implementa un sistema automatizado de despliegue a través de pipelines con herramientas como Jenkins, JenkinsX, CircleCI u otras similares para construir, probar y desplegar la aplicación.
+- [ ] Incluye un panel de monitoreo de la aplicación con herramientas como Grafana, Kibana o similares para recoger y exponer datos de los contenedores.
+- [ ] La presentación del Proyecto Final requiere una memoria justificando las decisiones y explicando el enfoque adoptado.
