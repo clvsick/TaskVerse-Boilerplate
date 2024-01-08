@@ -8,7 +8,7 @@ Se trata de una implementación de CI/CD para automatizar las pruebas y el despl
 
 Para ello, hemos definido la siguiente estructura de carpetas y archivos: 
 
-```
+```bash
 TaskVerse-Boilerplate
 ├── README.md
 ├── backend
