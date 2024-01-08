@@ -1,5 +1,5 @@
 services:
-  - name: frontend
+  frontend:
     plan: auto
     buildCommand: |
       cd frontend
@@ -18,7 +18,7 @@ services:
       maxInstances: 1
     environment: {}
 
-  - name: backend
+  backend:
     plan: auto
     buildCommand: |
       cd backend
@@ -36,9 +36,9 @@ services:
       maxInstances: 1
     environment: {}
 
-  - name: mongo
+  mongo:
     plan: starter
-    image: mongo
+    plan: mongo
     env:
       MONGODB_INITDB_ROOT_USERNAME: ${MONGODB_INITDB_ROOT_USERNAME}
       MONGODB_INITDB_ROOT_PASSWORD: ${MONGODB_INITDB_ROOT_PASSWORD}
@@ -46,13 +46,13 @@ services:
       - port: 27017
         protocol: TCP
     healthCheckPath: /
-    environment: {}
     scaling:
       type: manual
       minInstances: 1
       maxInstances: 1
+    environment: {}
 
-  - name: mongo-express
+  mongo-express:
     plan: starter
     image: mongo-express
     env:
