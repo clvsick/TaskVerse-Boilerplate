@@ -52,17 +52,28 @@ TaskVerse-Boilerplate
 ## Diagrama de secuencia
 ```mermaid
 sequenceDiagram
-    participant Frontend
-    participant Backend
-    participant Server
-    participant Database
+    participant Usuario as Usuario (Frontend)
+    participant API as Servidor API (Backend)
+    participant MongoDB as MongoDB
+    participant MongoExpress as mongo-express
 
-    Frontend->>Backend: Petición HTTP
-    Backend->>Server: Procesar solicitud
-    Server->>Database: Consulta a la base de datos
-    Database-->>Server: Respuesta de la base de datos
-    Server-->>Backend: Respuesta procesada
-    Backend-->>Frontend: Respuesta HTTP
+    Usuario ->> API: Envía una solicitud POST al endpoint /tasks con los detalles de la tarea.
+    API -->> Usuario: Recibe la solicitud POST
+
+    API ->> API: Valida los detalles de la tarea.
+    API ->> API: Si son válidos, construye un nuevo objeto de tarea.
+    API ->> MongoDB: Conecta a MongoDB usando mongoose.
+    MongoDB ->> API: Conexión exitosa.
+    API ->> MongoDB: Inserta el objeto de tarea en la colección de tareas en MongoDB.
+    MongoDB -->> API: Inserción de tarea exitosa.
+
+    API ->> MongoExpress: Permite acceso a mongo-express para ver y manipular los datos.
+    MongoExpress -->> MongoDB: Conexión establecida con mongo-express.
+
+    API -->> Usuario: Envía una respuesta con el código de estado 201 (Creado).
+
+    Usuario -->> API: Recibe la respuesta.
+    API -->> Usuario: Muestra un mensaje de éxito y la lista de tareas actualizada.
 ```
 
 ---
