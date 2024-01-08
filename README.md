@@ -11,6 +11,7 @@ Para poder ver mejor la secuencia de los pasos de la aplicación, he creado un d
 - [ ] En la parte Backend, se ha desarrollado con ExpressJS y desplegado con [Node Alpine](https://hub.docker.com/_/node), que es una imagen más ligera de node.
 - [ ] La base de datos se ha desplegado con [MongoDB](https://www.mongodb.com/es) y se ha conectado con la librería [mongoose](https://mongoosejs.com/).
 
+<span style="font-size: 85%;">Este texto está en letras pequeñas.</span>
 ```mermaid
 sequenceDiagram
     title: Secuencia TaskVerse-Boilerplate
