@@ -1,5 +1,19 @@
 ## TaskVerse-Boilerplate - Tasks Application - Implementación CI/CD para automatizar las pruebas y el despliegue.
 
+## Clonación del proyecto.
+
+Para clonar el proyecto, se pueden usar los siguientes comandos:
+```
+git clone https://github.com/alexanderfarias/TaskVerse-Boilerplate.git
+cd TaskVerse-Boilerplate
+cd backend
+npm install
+cd ../frontend
+npm install
+cd ..
+docker compose up --build -d
+```
+
 Se trata de una implementación de CI/CD para automatizar las pruebas y el despliegue de mi aplicación la cual permite al usuario interactuar con la aplicación creando tareas y registrandolas en una base de datos MongoDB con la librería [mongoose](https://mongoosejs.com/) que se encarga de la persistencia de los datos. 
 
 
@@ -84,28 +98,6 @@ TaskVerse-Boilerplate
         ├── reportWebVitals.js
         └── setupTests.js
 ```
----
-
-## Guia para la clonación del proyecto.
-
-Para clonar el proyecto, se puede usar el siguiente enlace:
-```
-git clone https://github.com/alexanderfarias/TaskVerse-Boilerplate.git
-cd TaskVerse-Boilerplate
-cd backend
-npm install
-cd ../frontend
-npm install
-cd ..
-docker compose up --build -d
-```
-
-
-
-
-
-
-
 ---
 
 ## Criterios del proyecto.
