@@ -1,4 +1,6 @@
-TaskVerse-Boilerplate - Tasks Application - CI/CD Implementation for automated testing and deployment
+[]: # README.md
+
+## TaskVerse-Boilerplate - Tasks Application - implementacion CI/CD para automatizar las pruebas y el despliegue.
 
 Se trata de una implementación de CI/CD para automatizar las pruebas y el despliegue de mi aplicación la cual permite al usuario interactuar con la aplicación creando tareas y registrandolas en una base de datos MongoDB con la librería [mongoose](https://mongoosejs.com/) que se encarga de la persistencia de los datos. 
 
@@ -13,6 +15,7 @@ Para poder ver mejor la secuencia de los pasos de la aplicación, he creado un d
 
 ```mermaid
 sequenceDiagram
+
     participant Usuario as Usuario (Frontend)
     participant API as Servidor API (Backend)
     participant MongoDB as MongoDB
