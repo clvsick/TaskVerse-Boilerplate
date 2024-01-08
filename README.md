@@ -90,9 +90,15 @@ TaskVerse-Boilerplate
 
 Para clonar el proyecto, se puede usar el siguiente enlace:
 ```
-https://github.com/alexanderfarias/TaskVerse-Boilerplate.git
+git clone https://github.com/alexanderfarias/TaskVerse-Boilerplate.git
+cd TaskVerse-Boilerplate
+cd backend
+npm install
+cd ../frontend
+npm install
+cd ..
+docker compose up --build -d
 ```
-
 
 
 
