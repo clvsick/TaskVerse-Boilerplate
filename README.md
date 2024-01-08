@@ -1,6 +1,6 @@
 ## TaskVerse-Boilerplate - Tasks Application - Implementación CI/CD para automatizar las pruebas y el despliegue.
 
-## Clonación del proyecto.
+## Clonación: TaskVerse-Boilerplate
 
 Para clonar el proyecto, se pueden usar los siguientes comandos:
 ```
@@ -13,12 +13,12 @@ npm install
 cd ..
 docker compose up --build -d
 ```
-## Descripción del proyecto TaskVerse-Boilerplate.
+## Descripción: TaskVerse-Boilerplate
 Se trata de una implementación de CI/CD para automatizar las pruebas y el despliegue de mi aplicación la cual permite al usuario interactuar con la aplicación creando tareas y registrandolas en una base de datos MongoDB con la librería [mongoose](https://mongoosejs.com/) que se encarga de la persistencia de los datos. 
 
 
 ---
-## Diagrama de secuencia
+## Diagrama: TaskVerse-Boilerplate
 Para poder ver mejor la secuencia de los pasos de la aplicación, he creado un diagrama de secuencia que muestra el flujo de la aplicación desde que el usuario introduce una tarea hasta que se registra en la base de datos. Pasando primero por la parte frontend donde el usuario introduce la tarea, y posteriormente por la parte backend donde se registra la tarea en la base de datos.
 
 - [ ] En la parte Frontend, se ha desarrollado con [ReactJS](https://reactjs.org/) y desplegado con [Node Alpine](https://hub.docker.com/_/node), que es una imagen más ligera de node.
@@ -54,7 +54,7 @@ sequenceDiagram
 ```
 ---
 
-## Estructura de directorios.
+## Estructura: TaskVerse-Boilerplate
 
 Para ello, hemos definido la siguiente estructura de carpetas y archivos: 
 
