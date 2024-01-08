@@ -13,7 +13,7 @@ npm install
 cd ..
 docker compose up --build -d
 ```
-
+## Descripción del proyecto TaskVerse-Boilerplate.
 Se trata de una implementación de CI/CD para automatizar las pruebas y el despliegue de mi aplicación la cual permite al usuario interactuar con la aplicación creando tareas y registrandolas en una base de datos MongoDB con la librería [mongoose](https://mongoosejs.com/) que se encarga de la persistencia de los datos. 
 
 
