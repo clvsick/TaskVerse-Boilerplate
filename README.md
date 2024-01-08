@@ -8,7 +8,7 @@ Se trata de una implementación de CI/CD para automatizar las pruebas y el despl
 
 Para ello, hemos definido la siguiente estructura de carpetas y archivos: 
 
-```bash
+```
 TaskVerse-Boilerplate
 ├── README.md
 ├── backend
@@ -50,6 +50,7 @@ TaskVerse-Boilerplate
 ```
 ---
 ## Diagrama de secuencia
+```mermaid
 sequenceDiagram
     participant Frontend
     participant Backend
@@ -62,7 +63,7 @@ sequenceDiagram
     Database-->>Server: Respuesta de la base de datos
     Server-->>Backend: Respuesta procesada
     Backend-->>Frontend: Respuesta HTTP
-
+```
 
 ---
 ## Descripción
