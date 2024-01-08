@@ -4,6 +4,38 @@ Se trata de una implementación de CI/CD para automatizar las pruebas y el despl
 
 
 ---
+Para poder ver mejor la secuencia de los pasos de la aplicación, he creado un diagrama de secuencia que muestra el flujo de la aplicación desde que el usuario introduce una tarea hasta que se registra en la base de datos. Pasando primero por la parte frontend donde el usuario introduce la tarea, y posteriormente por la parte backend donde se registra la tarea en la base de datos.
+    - En la parte Frontend, se ha desarrollado con [ReactJS](https://reactjs.org/) y desplegado con [Node Alpine](https://hub.docker.com/_/node), que es una imagen más ligera de node.
+    - En la parte Backend, se registra la tarea en la base de datos.
+
+## Diagrama de secuencia
+```mermaid
+sequenceDiagram
+    participant Usuario as Usuario (Frontend)
+    participant API as Servidor API (Backend)
+    participant MongoDB as MongoDB
+    participant MongoExpress as mongo-express
+
+    Usuario ->> API: Envía una solicitud POST al endpoint /tasks con los detalles de la tarea.
+    API -->> Usuario: Recibe la solicitud POST
+
+    API ->> API: Valida los detalles de la tarea.
+    API ->> API: Si son válidos, construye un nuevo objeto de tarea.
+    API ->> MongoDB: Conecta a MongoDB usando mongoose.
+    MongoDB ->> API: Conexión exitosa.
+    API ->> MongoDB: Inserta el objeto de tarea en la colección de tareas en MongoDB.
+    MongoDB -->> API: Inserción de tarea exitosa.
+
+    API ->> MongoExpress: Permite acceso a mongo-express para ver y manipular los datos.
+    MongoExpress -->> MongoDB: Conexión establecida con mongo-express.
+
+    API -->> Usuario: Envía una respuesta con el código de estado 201 (Creado).
+
+    Usuario -->> API: Recibe la respuesta.
+    API -->> Usuario: Muestra un mensaje de éxito y la lista de tareas actualizada.
+```
+---
+
 ## Estructura de directorios.
 
 Para ello, hemos definido la siguiente estructura de carpetas y archivos: 
@@ -47,33 +79,6 @@ TaskVerse-Boilerplate
         ├── logo.svg
         ├── reportWebVitals.js
         └── setupTests.js
-```
----
-## Diagrama de secuencia
-```mermaid
-sequenceDiagram
-    participant Usuario as Usuario (Frontend)
-    participant API as Servidor API (Backend)
-    participant MongoDB as MongoDB
-    participant MongoExpress as mongo-express
-
-    Usuario ->> API: Envía una solicitud POST al endpoint /tasks con los detalles de la tarea.
-    API -->> Usuario: Recibe la solicitud POST
-
-    API ->> API: Valida los detalles de la tarea.
-    API ->> API: Si son válidos, construye un nuevo objeto de tarea.
-    API ->> MongoDB: Conecta a MongoDB usando mongoose.
-    MongoDB ->> API: Conexión exitosa.
-    API ->> MongoDB: Inserta el objeto de tarea en la colección de tareas en MongoDB.
-    MongoDB -->> API: Inserción de tarea exitosa.
-
-    API ->> MongoExpress: Permite acceso a mongo-express para ver y manipular los datos.
-    MongoExpress -->> MongoDB: Conexión establecida con mongo-express.
-
-    API -->> Usuario: Envía una respuesta con el código de estado 201 (Creado).
-
-    Usuario -->> API: Recibe la respuesta.
-    API -->> Usuario: Muestra un mensaje de éxito y la lista de tareas actualizada.
 ```
 
 ---
