@@ -1,72 +1,9 @@
 services:
-  frontend:
-    plan: auto
-    buildCommand: |
-      cd frontend
-      npm install
-      npm run build
-    startCommand: npm run start
-    env: {}
-    ports:
-      - port: ${FRONTEND_HOST_PORT}
-        protocol: HTTP
-    healthCheckPath: /
-    source: .
-    scaling:
-      type: manual
-      minInstances: 1
-      maxInstances: 1
-    environment: {}
-
-  backend:
-    plan: auto
-    buildCommand: |
-      cd backend
-      npm install
-    startCommand: npm run start
-    env: {}
-    ports:
-      - port: ${BACKEND_HOST_PORT}
-        protocol: HTTP
-    healthCheckPath: /
-    source: .
-    scaling:
-      type: manual
-      minInstances: 1
-      maxInstances: 1
-    environment: {}
-
-  mongo:
-    plan: starter
-    plan: mongo
-    env:
-      MONGODB_INITDB_ROOT_USERNAME: ${MONGODB_INITDB_ROOT_USERNAME}
-      MONGODB_INITDB_ROOT_PASSWORD: ${MONGODB_INITDB_ROOT_PASSWORD}
-    ports:
-      - port: 27017
-        protocol: TCP
-    healthCheckPath: /
-    scaling:
-      type: manual
-      minInstances: 1
-      maxInstances: 1
-    environment: {}
-
-  mongo-express:
-    plan: starter
-    image: mongo-express
-    env:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: username
-      ME_CONFIG_MONGODB_ADMINPASSWORD: password
-    ports:
-      - port: ${MONGO_EXPRESS_HOST_PORT}
-        protocol: HTTP
-    healthCheckPath: /
-    scaling:
-      type: manual
-      minInstances: 1
-      maxInstances: 1
-    environment: {}
-
-networks: []
-volumes: {}
+  - type: web
+    name: frontend
+    env: docker
+    dockerfilePath: ./frontend/Dockerfile
+    startCommand: # el comando que quieras usar para iniciar tu servicio frontend
+    dependsOn:
+      - backend
+    # otras configuraciones opcionales para tu servicio frontend
