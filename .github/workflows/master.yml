@@ -1,29 +1,11 @@
 name: TaskVerse-Boilerplate CI/CD Pipeline
 
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch
 
 jobs:
-  build:
+  top-secret:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code repository
-        uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Set up Docker Compose
-        uses: docker/compose-action@v1.5.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }} 
-
-      - name: Build and push Docker images
-        run: |
-          docker-compose build
-          docker-compose push
-
-      - name: Deploy to Docker Compose
-        run: docker-compose up -d
+      - name: Read Secrets
+        run: echo ${{ secrets.GITHUB_TOKEN }}
