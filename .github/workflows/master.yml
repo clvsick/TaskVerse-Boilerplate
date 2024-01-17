@@ -1,31 +1,39 @@
 name: TaskVerse-Boilerplate CI/CD Pipeline
 
 on:
-    push:
-        branches:
-            - master
+  push:
+    branches:
+      - master
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout repository code.
-              uses: actions/checkout@v2
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code.
+        uses: actions/checkout@v2
 
-            - name: Install dependencies
-              run: npm install
+      - name: Install dependencies
+        run: npm install
 
-            - name: Build
-              run: npm run build
-    Deploy-Docker-Compose:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout repository code.
-              uses: actions/checkout@v3
-              
-            - name: Docker compose build
-              uses: isbang/compose-action@v1.4.1
-              with:
-                  build: './docker-compose.yml'
-                  env: './.env'
-                  pull: true
+      - name: Build
+        run: npm run build
+
+  Deploy-Docker-Compose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code.
+        uses: actions/checkout@v3
+          
+      - name: Docker compose build
+        uses: isbang/compose-action@v1.4.1
+        with:
+          build: './docker-compose.yml'
+        env:
+          FRONTEND_CONTAINER_PORT: 3000
+          FRONTEND_HOST_PORT: 3000
+          MONGODB_INITDB_ROOT_USERNAME: admin
+          MONGODB_INITDB_ROOT_PASSWORD: password
+          BACKEND_CONTAINER_PORT: 3001
+          BACKEND_HOST_PORT: 3001
+          MONGO_EXPRESS_CONTAINER_PORT: 8081
+          MONGO_EXPRESS_HOST_PORT: 8081
