@@ -22,6 +22,7 @@ jobs:
         uses: isbang/compose-action@v1.4.1
         with:
           build: './docker-compose.yml'
+          up: 'build'
         env:
           FRONTEND_CONTAINER_PORT: 3000
           FRONTEND_HOST_PORT: 3000
