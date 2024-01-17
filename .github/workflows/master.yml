@@ -27,3 +27,5 @@ jobs:
               uses: isbang/compose-action@v1.4.1
               with:
                   build: './docker-compose.yml'
+                  env: './.env'
+                  pull: true
