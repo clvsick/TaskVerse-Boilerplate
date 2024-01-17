@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code repository
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Docker Compose
         uses: docker/compose-action@v1.5.1
