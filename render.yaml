@@ -3,7 +3,3 @@ services:
     name: frontend
     env: docker
     dockerfilePath: ./frontend/Dockerfile
-    startCommand: # el comando que quieras usar para iniciar tu servicio frontend
-    dependsOn:
-      - backend
-    # otras configuraciones opcionales para tu servicio frontend
