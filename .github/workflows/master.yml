@@ -1,24 +1,27 @@
 name: TaskVerse-Boilerplate CI/CD Pipeline
 
 on:
-    push:
-        branches:
-            - master
+  push:
+    branches:
+      - master
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout code repository
-              uses: actions/checkout@v2
+  build:
+    runs-on: ubuntu-latest
 
-            - name: Set up Node.js
-              uses: actions/setup-node@v3
-              with:
-                  node-version: '14'
+    steps:
+      - name: Checkout code repository
+        uses: actions/checkout@v2
 
-            - name: Install dependencies and build backend
-              run: |
-                  cd backend
-                  npm install
-                  npm run build
+      - name: Set up Docker Compose 
+        uses: docker/compose-action@v2
+        with:
+          compose-file: docker-compose.yml
+
+      - name: Build and push Docker images
+        run: |
+          docker-compose build
+          docker-compose push
+
+      - name: Deploy to Docker Compose
+        run: docker-compose up -d
