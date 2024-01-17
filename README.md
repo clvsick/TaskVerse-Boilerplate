@@ -54,7 +54,7 @@ sequenceDiagram
 ```
 ---
 
-## Estructura: TaskVerse-Boilerplate
+## Estructura: TaskVerse-Boilerplate.
 
 Para ello, hemos definido la siguiente estructura de carpetas y archivos: 
 
