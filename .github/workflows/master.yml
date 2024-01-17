@@ -9,20 +9,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository code.
+      - name: Checkout repository code
         uses: actions/checkout@v4
 
   Deploy-Docker-Compose:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository code.
+      - name: Checkout repository code
         uses: actions/checkout@v4
-          
-      - name: Docker compose build
-        uses: isbang/compose-action@v1.4.1
-        with:
-          build: './docker-compose.yml'
-          up: 'build'
+
+      - name: Docker compose build and up
+        run: |
+          docker-compose up --build -d
+        working-directory: ./  # Ajusta el directorio de trabajo según tu estructura
+
+          # Asegúrate de definir las variables de entorno necesarias
+          # FRONTEND_CONTAINER_PORT, FRONTEND_HOST_PORT, ...
         env:
           FRONTEND_CONTAINER_PORT: 3000
           FRONTEND_HOST_PORT: 3000
