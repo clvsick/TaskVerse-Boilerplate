@@ -29,8 +29,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {
@@ -46,6 +45,8 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-jest": "^27.6.3",
     "gh-pages": "^6.1.1"
   }
