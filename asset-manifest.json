@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/TaskVerse-Boilerplate/static/css/main.1c558e68.css",
+    "main.js": "/TaskVerse-Boilerplate/static/js/main.cf5e7401.js",
+    "static/js/787.5ad96c4b.chunk.js": "/TaskVerse-Boilerplate/static/js/787.5ad96c4b.chunk.js",
+    "index.html": "/TaskVerse-Boilerplate/index.html",
+    "main.1c558e68.css.map": "/TaskVerse-Boilerplate/static/css/main.1c558e68.css.map",
+    "main.cf5e7401.js.map": "/TaskVerse-Boilerplate/static/js/main.cf5e7401.js.map",
+    "787.5ad96c4b.chunk.js.map": "/TaskVerse-Boilerplate/static/js/787.5ad96c4b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1c558e68.css",
+    "static/js/main.cf5e7401.js"
+  ]
+}
