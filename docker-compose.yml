@@ -5,7 +5,7 @@ services:
     depends_on:
       - taskverse-backend
     ports:
-      - "${FRONTEND_HOST_PORT}:${FRONTEND_CONTAINER_PORT}"
+      - "3000:3000"
     networks:
       - network-backend
   taskverse-backend:
@@ -13,7 +13,7 @@ services:
     depends_on:
       - mongo
     ports:
-      - "${BACKEND_HOST_PORT}:${BACKEND_CONTAINER_PORT}"
+      - "3001:3001"
     networks: 
      - network-backend
   
@@ -40,7 +40,7 @@ services:
       ME_CONFIG_BASICAUTH_USERNAME: admin
       ME_CONFIG_BASICAUTH_PASSWORD: password
     ports:
-      - "${MONGO_EXPRESS_HOST_PORT}:${MONGO_EXPRESS_CONTAINER_PORT}"
+      - "8081:8081"
     depends_on:
       - mongo
     networks: 
@@ -63,7 +63,7 @@ services:
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
       KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
     ports:
-      - "${KEYCLOAK_HOST_PORT}:${KEYCLOAK_CONTAINER_PORT}"
+      - "8080:8080"
     depends_on:
       taskverse_postgres_keycloak:
         condition: service_healthy
@@ -84,7 +84,7 @@ services:
     healthcheck:
       test: "exit 0"
     ports:
-      - "${POSTGRES_HOST_PORT}:${POSTGRES_CONTAINER_PORT}"
+      - "5432:5432"
     networks:
       - network-backend
 
