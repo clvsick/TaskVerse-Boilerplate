@@ -67,6 +67,8 @@ services:
     depends_on:
       taskverse_postgres_keycloak:
         condition: service_healthy
+    healthcheck:
+      test: "exit 0"
     networks:
       - network-backend
 
