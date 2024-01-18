@@ -1,14 +1,14 @@
 version: "3.8"
 services:
-  frontend:
+  taskverse-frontend:
     build: ./frontend
     depends_on:
-      - backend
+      - taskverse-backend
     ports:
       - "${FRONTEND_HOST_PORT}:${FRONTEND_CONTAINER_PORT}"
     networks:
       - network-backend
-  backend:
+  taskverse-backend:
     build: ./backend
     depends_on:
       - mongo
@@ -30,37 +30,68 @@ services:
     #   - 27017:27017
     networks: 
      - network-backend
-  mongo-express:
+
+
+  taskverse-mongo-express:
     image: mongo-express
     restart: always
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: password
     ports:
       - "${MONGO_EXPRESS_HOST_PORT}:${MONGO_EXPRESS_CONTAINER_PORT}"
     depends_on:
       - mongo
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: username
-      ME_CONFIG_MONGODB_ADMINPASSWORD: password
     networks: 
      - network-backend   
-  keycloak:
+
+
+  taskverse-keycloak:
     image: keycloak/keycloak:latest
-    container_name: keycloak-service
+    container_name: taskverse-keycloak
     restart: always
-    ports:
-      - "${KEYCLOAK_HOST_PORT}:${KEYCLOAK_CONTAINER_PORT}"
     command:
       - start-dev
-      - --http-port=8080
-    depends_on:
-      - mongo
     environment:
+      KC_DB: ${KC_DB}
+      KC_DB_URL_HOST: ${KC_DB_URL_HOST}
+      KC_DB_URL_DATABASE: ${KC_DB_URL_DATABASE}
+      KC_DB_USERNAME: ${KC_DB_USERNAME}
+      KC_DB_PASSWORD: ${KC_DB_PASSWORD}
+      KC_DB_SCHEMA: ${KC_DB_SCHEMA}
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
       KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
-    networks: 
-     - network-backend
+    ports:
+      - "${KEYCLOAK_HOST_PORT}:${KEYCLOAK_CONTAINER_PORT}"
+    depends_on:
+      taskverse_postgres_keycloak:
+        condition: service_healthy
+    networks:
+      - network-backend
 
-networks:
-  network-backend:
+  taskverse_postgres_keycloak:
+    image: postgres:latest
+    container_name: taskverse_postgres_keycloak
+    restart: always
+    command: postgres -c 'max_connections=200'
+    volumes:
+      - pgdata_keycloak:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    healthcheck:
+      test: "exit 0"
+    ports:
+      - "${POSTGRES_HOST_PORT}:${POSTGRES_CONTAINER_PORT}"
+    networks:
+      - network-backend
 
 volumes: 
   mongodb_data:
+  pgdata_keycloak:
+
+networks:
+  network-backend:
+    driver: bridge
