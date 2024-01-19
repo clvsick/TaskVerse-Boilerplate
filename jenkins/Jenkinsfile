@@ -5,10 +5,12 @@ pipeline {
         
         stage('Build') {
             steps {
-                // Get some code from a GitHub repository
-                checkout scm
+                checkout([$class: 'GitSCM',
+                        branches: [[name: '*/master']],
+                        userRemoteConfigs: [[url: 'https://github.com/TaskVerse/TaskVerse-Boilerplate']]])
             }
         }
+
 
         stage('Start Docker Containers') {
             steps {

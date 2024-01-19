@@ -1,7 +1,9 @@
 version: "3.9"
+
 services:
   jenkins:
-    image: jenkins/jenkins:lts
+    build: .
+    container_name: jenkins
     ports:
       - "8080:8080"
       - "50000:50000"
@@ -9,11 +11,16 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - jenkins_home:/var/jenkins_home
     restart: always
+    command: bash -c "chmod 666 /var/run/docker.sock && exec java -jar /usr/share/jenkins/jenkins.war"
+    user: root
+    env_file:
+      - ../.env
     environment:
       - JENKINS_ADMIN_ID=admin
       - JENKINS_ADMIN_PASSWORD=admin
     networks:
       - taskverse-network-jenkins
+    
 volumes:
   jenkins_home:
 
