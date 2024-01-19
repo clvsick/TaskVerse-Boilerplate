@@ -10,22 +10,11 @@ pipeline {
             }
         }
 
-        stage('Build and Push Images') {
-            steps {
-                // Build and push the images 
-                script {
-                    docker.build('my-taskverse-app-frontend', './frontend')
-                    docker.build('my-taskverse-app-backend', './backend')
-                }
-            }
-            
-        }
-
         stage('Start Docker Containers') {
             steps {
                 // Start the containers
                 script {
-                    sh 'docker-compose up -d'
+                    sh 'docker compose up --build -d'
                 }
             }
             
