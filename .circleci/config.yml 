@@ -1,12 +1,13 @@
 version: 2.1
-
+orbs:
+  node: circleci/node@5
 jobs:
-    build:
-        docker:
-            - image: circleci/base:stable
+  test-node:
+    # Install node dependencies and run tests
+    executor: node/default
+    working_directory: ~/project/frontend
     steps:
-        - run: echo hola
-workflows:
-    hello:
-        jobs:
-            - build
+      - checkout:
+          path: ~/project
+      - node/install-packages:
+          pkg-manager: npm
