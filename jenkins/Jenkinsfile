@@ -2,26 +2,16 @@ pipeline {
     agent any
 
     stages {
-        
-        stage('Git clone the repository') {
+        stage('Checkout') {
             steps {
-                // Clone the repository
-                git branch: 'main', url: 'https://github.com/TaskVerse/TaskVerse-Boilerplate.git'
-                github = 'https://github.com/TaskVerse/TaskVerse-Boilerplate.git'
-                echo "Cloning the repository: ${github}"
-
-            }
-        }
-
-
-        stage('Start Docker Containers') {
-            steps {
-                // Start the containers
                 script {
-                    sh 'docker compose up --build -d'
+                    checkout([$class: 'GitSCM',
+                              branches: [[name: '*/master']],
+                              userRemoteConfigs: [[url: 'https://github.com/TaskVerse/TaskVerse-Boilerplate.git']]])
                 }
             }
-            
         }
+
+        // Agrega otras etapas según sea necesario
     }
 }
