@@ -1,27 +1,27 @@
 pipeline {
     agent any
-    
-    tools {
-        git 'default'
-    }
-
-    environment {
-        
-        GIT_REPO = 'git@github.com:clvsick/TaskVerse-Boilerplate.git'
-    }
 
     stages {
-        stage('Checkout') {
+        
+        stage('Git clone the repository') {
             steps {
-                script {
-                    // Configura la credencial SSH
-                    withCredentials([userPassword(credentialsId: 'Jenkins-TaskVerse-Boilerplate', passwordVariable: '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', usernameVariable: 'clvsick')]) {
-                        // Clona el repositorio utilizando la credencial SSH
-                        sh "git clone -b main ${env.GIT_REPO}"
-                    }
-                }
+                // Clone the repository
+                git branch: 'main', url: 'https://github.com/TaskVerse/TaskVerse-Boilerplate.git'
+                github = 'https://github.com/TaskVerse/TaskVerse-Boilerplate.git'
+                echo "Cloning the repository: ${github}"
+
             }
         }
-        // Otros pasos del pipeline aquí
+
+
+        stage('Start Docker Containers') {
+            steps {
+                // Start the containers
+                script {
+                    sh 'docker compose up --build -d'
+                }
+            }
+            
+        }
     }
 }
