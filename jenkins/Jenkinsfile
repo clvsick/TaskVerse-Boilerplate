@@ -1,6 +1,10 @@
 pipeline {
     agent any
     
+    tools {
+        git 'default'
+    }
+
     environment {
         
         GIT_REPO = 'git@github.com:clvsick/TaskVerse-Boilerplate.git'
