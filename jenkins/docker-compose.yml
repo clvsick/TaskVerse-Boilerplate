@@ -18,6 +18,7 @@ services:
     environment:
       - JENKINS_ADMIN_ID=admin
       - JENKINS_ADMIN_PASSWORD=admin
+      - TZ=Europe/Madrid
     networks:
       - taskverse-network-jenkins
     

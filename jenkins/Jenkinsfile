@@ -3,11 +3,12 @@ pipeline {
 
     stages {
         
-        stage('Build') {
+        stage('Git clone the repository') {
             steps {
-                checkout([$class: 'GitSCM',
-                        branches: [[name: '*/master']],
-                        userRemoteConfigs: [[url: 'https://github.com/TaskVerse/TaskVerse-Boilerplate']]])
+                // Clone the repository
+                git branch: 'main', url: 'https://github.com/TaskVerse/TaskVerse-Boilerplate.git'
+                github = 'https://github.com/TaskVerse/TaskVerse-Boilerplate.git'
+                echo "Cloning the repository: ${github}"
             }
         }
 
