@@ -14,7 +14,9 @@ services:
       - mongo
     ports:
       - "3001:3001"
-  
+# ================================================================================================================
+# mongo es la base de datos que nos permitira crear la base de datos con la que trabajara nuestra api de taskverse.
+# ================================================================================================================
   mongo:
     container_name: taskverse_mongo
     image: mongo
@@ -27,14 +29,18 @@ services:
     # descomentar para usar mongo local
     # ports:
     #   - 27017:27017
-  
+# ================================================================================================================
+# snmp_exporter nos permitira consumir la base de datos y obtener estadísticas para prometheus.
+# ================================================================================================================
   snmp_exporter:
     container_name: taskverse-snmp-exporter
     image: prom/snmp-exporter
     restart: always
     ports:
       - "9157:9157"
-
+# ================================================================================================================
+# mongo-express nos proporciona una interfaz de usuario para administrar la base de datos mongodb.
+# ================================================================================================================
   mongo-express:
     container_name: taskverse-mongo-express
     image: mongo-express
@@ -48,7 +54,9 @@ services:
     depends_on:
       - mongo  
 
-
+# ================================================================================================================
+# keycloak es el servidor que nos permitirá implementar un sistema de autenticación.
+# ================================================================================================================
   keycloak:
     image: keycloak/keycloak:latest
     container_name: taskverse-keycloak
@@ -70,7 +78,9 @@ services:
       - "8080:8080"
     depends_on:
       - postgres
-
+# ================================================================================================================
+# postgres nos permitira crear la base de datos con la que trabajara nuestro keycloak.
+# ================================================================================================================
   postgres:
     image: postgres:latest
     container_name: taskverse_postgres
@@ -83,8 +93,9 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - "5432:5432"
-
+# ================================================================================================================
 # postgres-exporter nos permitira consumir la base de datos y obtener estadísticas para prometheus.
+# ================================================================================================================
   postgres-exporter:
     container_name: taskverse_postgres_exporter
     image: bitnami/postgres-exporter
@@ -95,7 +106,10 @@ services:
       - DATA_SOURCE_NAME=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?sslmode=disable
     depends_on:
       - postgres
-  
+
+# ================================================================================================================
+# prometheus nos permitira recopilar metricas de sistemas y servicios en tiempo real.
+# ================================================================================================================ 
   prometheus:
     container_name: taskverse_prometheus
     image: prom/prometheus:latest
@@ -107,7 +121,10 @@ services:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     command:
       - --config.file=/etc/prometheus/prometheus.yml
-  
+
+# ================================================================================================================
+# grafana nos permitira visualizar y analizar los datos recopilados en prometheus.
+# ================================================================================================================
   grafana:
     container_name: taskverse_grafana
     image: grafana/grafana:latest
@@ -121,6 +138,9 @@ services:
     depends_on:
       - prometheus
 
+# ==============================
+# volumes
+# ==============================
 volumes: 
   mongodb_data:
   pgdata_keycloak:
