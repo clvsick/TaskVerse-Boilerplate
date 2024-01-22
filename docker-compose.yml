@@ -1,23 +1,22 @@
 version: "3.9"
 services:
-  taskverse-frontend:
+  frontend:
+    container_name: taskverse_frontend
     build: ./frontend
     depends_on:
-      - taskverse-backend
+      - backend
     ports:
       - "3000:3000"
-    networks:
-      - network-backend
-  taskverse-backend:
+  backend:
+    container_name: taskverse_backend
     build: ./backend
     depends_on:
       - mongo
     ports:
       - "3001:3001"
-    networks: 
-     - network-backend
   
   mongo:
+    container_name: taskverse_mongo
     image: mongo
     restart: always
     volumes: 
@@ -28,11 +27,16 @@ services:
     # descomentar para usar mongo local
     # ports:
     #   - 27017:27017
-    networks: 
-     - network-backend
+  
+  snmp_exporter:
+    container_name: taskverse-snmp-exporter
+    image: prom/snmp-exporter
+    restart: always
+    ports:
+      - "9157:9157"
 
-
-  taskverse-mongo-express:
+  mongo-express:
+    container_name: taskverse-mongo-express
     image: mongo-express
     restart: always
     environment:
@@ -42,12 +46,10 @@ services:
     ports:
       - "8081:8081"
     depends_on:
-      - mongo
-    networks: 
-     - network-backend   
+      - mongo  
 
 
-  taskverse-keycloak:
+  keycloak:
     image: keycloak/keycloak:latest
     container_name: taskverse-keycloak
     restart: always
@@ -62,17 +64,16 @@ services:
       KC_DB_SCHEMA: ${KC_DB_SCHEMA}
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
       KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+      KC_HEALTH_ENABLED: 'true'
+      KC_METRICS_ENABLED: 'true'
     ports:
       - "8080:8080"
     depends_on:
-      - taskverse_postgres_keycloak
-    networks:
-      - network-backend
+      - postgres
 
-  taskverse_postgres_keycloak:
+  postgres:
     image: postgres:latest
-    container_name: taskverse_postgres_keycloak
-    restart: always
+    container_name: taskverse_postgres
     command: postgres -c 'max_connections=200'
     volumes:
       - pgdata_keycloak:/var/lib/postgresql/data
@@ -82,13 +83,46 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - "5432:5432"
-    networks:
-      - network-backend
+
+# postgres-exporter nos permitira consumir la base de datos y obtener estadísticas para prometheus.
+  postgres-exporter:
+    container_name: taskverse_postgres_exporter
+    image: bitnami/postgres-exporter
+    restart: always
+    ports:
+      - "9187:9187"
+    environment:
+      - DATA_SOURCE_NAME=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/postgres
+    depends_on:
+      - postgres
+  
+  prometheus:
+    container_name: taskverse_prometheus
+    image: prom/prometheus:latest
+    restart: always
+    ports:
+      - 9090:9090
+    volumes:
+      - prometheus_data:/prometheus
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+  
+  grafana:
+    container_name: taskverse_grafana
+    image: grafana/grafana:latest
+    restart: always
+    ports:
+      - 3002:3000
+    volumes:
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    depends_on:
+      - prometheus
 
 volumes: 
   mongodb_data:
   pgdata_keycloak:
-
-networks:
-  network-backend:
-    driver: bridge
+  prometheus_data:
+  grafana_data:
