@@ -1,23 +1,30 @@
-version: '3.8'
+version: "3.9"
+
 services:
   jenkins:
-    image: jenkins/jenkins:lts
-    privileged: true
+    build: .
     container_name: jenkins
-    restart: always
     ports:
       - "8080:8080"
+      - "50000:50000"
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
       - jenkins_home:/var/jenkins_home
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
+    restart: always
+    command: bash -c "chmod 666 /var/run/docker.sock && exec java -jar /usr/share/jenkins/jenkins.war"
+    user: root
+    env_file:
+      - ../.env
+    environment:
+      - JENKINS_ADMIN_ID=admin
+      - JENKINS_ADMIN_PASSWORD=admin
+      - TZ=Europe/Madrid
     networks:
-      - jenkins_network
-  ssh-agent:
-    image: jenkins/ssh-agent
-
+      - taskverse-network-jenkins
+    
 volumes:
   jenkins_home:
 
 networks:
-  jenkins_network:
+  taskverse-network-jenkins:
+    driver: bridge
