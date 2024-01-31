@@ -125,7 +125,6 @@ Para ello, hemos definido la siguiente estructura de carpetas y archivos:
 │   ├── public
 │   └── src
 ├── prometheus
-│   ├── mongodb
 │   └── prometheus.yml
 └── update_all_dependencies.sh
 ```
