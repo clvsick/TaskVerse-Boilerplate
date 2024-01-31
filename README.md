@@ -24,6 +24,7 @@ Para poder ver mejor la secuencia de los pasos de la aplicación, he creado un d
 - [ ] En la parte Frontend, se ha desarrollado con [ReactJS](https://reactjs.org/) y desplegado con [Node Alpine](https://hub.docker.com/_/node), que es una imagen más ligera de node.
 - [ ] En la parte Backend, se ha desarrollado con ExpressJS y desplegado con [Node Alpine](https://hub.docker.com/_/node), que es una imagen más ligera de node.
 - [ ] La base de datos se ha desplegado con [MongoDB](https://www.mongodb.com/es) y se ha conectado con la librería [mongoose](https://mongoosejs.com/).
+- [ ] Se ha configurado Keycloak como sistema de autenticación al acceder al portal (http://localhost:3000), primero redirige la petición a Keycloak para iniciar sesión y posteriormente a la aplicación.
 
 ```mermaid
 sequenceDiagram
@@ -32,7 +33,14 @@ sequenceDiagram
     participant Usuario as Usuario (Frontend)
     participant API as Servidor API (Backend)
     participant MongoDB as MongoDB
+    participant Keycloak as Keycloak
     participant MongoExpress as mongo-express
+
+    Usuario ->> Keycloak: Accede al portal (http://localhost:3000)
+    Keycloak -->> Usuario: Redirige a Keycloak para iniciar sesión
+
+    Usuario ->> Keycloak: Inicia sesión en Keycloak
+    Keycloak -->> Usuario: Autenticación exitosa
 
     Usuario ->> API: Envía una solicitud POST al endpoint /tasks con los detalles de la tarea.
     API -->> Usuario: Recibe la solicitud POST
