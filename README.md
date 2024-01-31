@@ -27,16 +27,16 @@ chmod +x update_all_dependencies.sh
 - [X] La aplicación se encuentra dockerizada en diferentes contenedores necesarios para el funcionamiento de la aplicación (backend, frontend, base de datos, Keycloak, Grafana, Prometheus, etc).
 - [X] Emplea el orquestrador docker-compose para la construcción de la aplicación.
 - [X] Implementa un sistema automatizado de despliegue a través de pipelines con la herramienta Github Actions para construir, probar y desplegar la aplicación.
-- [X] Incluye un panel de monitoreo de la aplicación gracias a la herramienta `[Prometheus](https://prometheus.io/)` (Recoge las metricas) junto con [Grafana](https://grafana.com/) (Visualiza los datos mediante Dashboards).
+- [X] Incluye un panel de monitoreo de la aplicación gracias a la herramienta `Prometheus` (Recoge las metricas) junto con `Grafana` (Visualiza los datos mediante Dashboards).
 - [X] Es posible probar la aplicación en diferentes entornos (local, cloud, etc.).
 - [x] Es posible configurar la base de datos y la autenticación para que funcione en diferentes entornos.
 
 ## Diagrama: TaskVerse-Boilerplate
 Para poder ver mejor la secuencia de los pasos de la aplicación, he creado un diagrama de secuencia que muestra el flujo de la aplicación desde que el usuario introduce una tarea hasta que se registra en la base de datos. Pasando primero por la parte frontend donde el usuario introduce la tarea, y posteriormente por la parte backend donde se registra la tarea en la base de datos.
 
-- [ ] En la parte Frontend, se ha desarrollado con [ReactJS](https://reactjs.org/) y desplegado con [Node Alpine](https://hub.docker.com/_/node), que es una imagen más ligera de node.
-- [ ] En la parte Backend, se ha desarrollado con ExpressJS y desplegado con [Node Alpine](https://hub.docker.com/_/node), que es una imagen más ligera de node.
-- [ ] La base de datos se ha desplegado con [MongoDB](https://www.mongodb.com/es) y se ha conectado con la librería [mongoose](https://mongoosejs.com/). La cual nos permite gestionar la persistencia de datos.
+- [ ] En la parte Frontend, se ha desarrollado con `ReactJS` y desplegado con `Node Alpine`, que es una imagen más ligera de node.
+- [ ] En la parte Backend, se ha desarrollado con `ExpressJS` y desplegado con `Node Alpine`, que es una imagen más ligera de node.
+- [ ] La base de datos se ha desplegado con `MongoDB` y se ha conectado con la librería `mongoose`. La cual nos permite gestionar la persistencia de datos.
 - [ ] Se ha configurado Keycloak como sistema de autenticación al acceder al portal (http://localhost:3000), primero redirige la petición a Keycloak para iniciar sesión y posteriormente a la aplicación.
 
 ```mermaid
