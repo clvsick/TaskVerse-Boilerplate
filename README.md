@@ -20,6 +20,17 @@ cd TaskVerse-Boilerplate
 chmod +x update_all_dependencies.sh
 ./update_all_dependencies.sh
 ```
+## Criterios del proyecto.
+
+- [X] La aplicación ha sido desarrollada con Node.js y ExpressJS.
+- [X] Ofrece un sistema de integración continua (Haciendo uso del repositorio de Github)
+- [X] La aplicación se encuentra dockerizada en diferentes contenedores necesarios para el funcionamiento de la aplicación (backend, frontend, base de datos, Keycloak, Grafana, Prometheus, etc).
+- [X] Emplea el orquestrador docker-compose para la construcción de la aplicación.
+- [X] Implementa un sistema automatizado de despliegue a través de pipelines con la herramienta Github Actions para construir, probar y desplegar la aplicación.
+- [X] Incluye un panel de monitoreo de la aplicación gracias a la herramienta [Prometheus](https://prometheus.io/) (Recoge las metricas) junto con [Grafana](https://grafana.com/) (Visualiza los datos mediante Dashboards).
+- [X] Es posible probar la aplicación en diferentes entornos (local, cloud, etc.).
+- [x] Es posible configurar la base de datos y la autenticación para que funcione en diferentes entornos.
+
 ## Diagrama: TaskVerse-Boilerplate
 Para poder ver mejor la secuencia de los pasos de la aplicación, he creado un diagrama de secuencia que muestra el flujo de la aplicación desde que el usuario introduce una tarea hasta que se registra en la base de datos. Pasando primero por la parte frontend donde el usuario introduce la tarea, y posteriormente por la parte backend donde se registra la tarea en la base de datos.
 
@@ -87,18 +98,6 @@ sequenceDiagram
     Prometheus->>+Grafana: Envía datos para evaluación de alertas
     Grafana->>+Usuario: Visualización de métricas y alertas
 ```
-
-## Criterios del proyecto.
-
-- [X] La aplicación ha sido desarrollada con Node.js y ExpressJS.
-- [X] Ofrece un sistema de integración continua (Haciendo uso del repositorio de Github)
-- [X] La aplicación se encuentra dockerizada en diferentes contenedores necesarios para el funcionamiento de la aplicación (backend, frontend, base de datos, Keycloak, Grafana, Prometheus, etc).
-- [X] Emplea el orquestrador docker-compose para la construcción de la aplicación.
-- [X] Implementa un sistema automatizado de despliegue a través de pipelines con la herramienta Github Actions para construir, probar y desplegar la aplicación.
-- [X] Incluye un panel de monitoreo de la aplicación gracias a la herramienta [Prometheus](https://prometheus.io/) (Recoge las metricas) junto con [Grafana](https://grafana.com/) (Visualiza los datos mediante Dashboards).
-- [X] Es posible probar la aplicación en diferentes entornos (local, cloud, etc.).
-- [x] Es posible configurar la base de datos y la autenticación para que funcione en diferentes entornos.
-
 ## Estructura: TaskVerse-Boilerplate
 
 Para ello, hemos definido la siguiente estructura de carpetas y archivos: 
