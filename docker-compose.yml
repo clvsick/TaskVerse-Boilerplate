@@ -1,5 +1,8 @@
 version: "3.9"
 services:
+# ================================================================================================================
+# Frontend Taskverse
+# ================================================================================================================
   frontend:
     container_name: taskverse_frontend
     build: ./frontend
@@ -7,6 +10,9 @@ services:
       - backend
     ports:
       - "3000:3000"
+# ================================================================================================================
+# Backend Taskverse
+# ================================================================================================================
   backend:
     container_name: taskverse_backend
     build: ./backend
@@ -14,6 +20,17 @@ services:
       - mongo
     ports:
       - "3001:3001"
+# ================================================================================================================
+# Node Exporter - Nos permitira obtener estadísticas de NodeJS de la parte Backend de nuestra aplicación.
+# ================================================================================================================
+  node_exporter:
+    container_name: taskverse_node_exporter
+    image: quay.io/prometheus/node-exporter:latest
+    restart: always
+    ports:
+      - 9100:9100
+    volumes:
+      - node_exporter_data:/tmp/
 # ================================================================================================================
 # mongo es la base de datos que nos permitira crear la base de datos con la que trabajara nuestra api de taskverse.
 # ================================================================================================================
@@ -30,14 +47,24 @@ services:
     # ports:
     #   - 27017:27017
 # ================================================================================================================
-# snmp_exporter nos permitira consumir la base de datos y obtener estadísticas para prometheus.
+# mongo_exporter nos permitira consumir las metricas de mongo y obtener estadísticas para prometheus.
 # ================================================================================================================
-  snmp_exporter:
-    container_name: taskverse-snmp-exporter
-    image: prom/snmp-exporter
+  mongo_exporter:
+    container_name: taskverse_mongo_exporter
+    image: percona/mongodb_exporter:0.40.0
     restart: always
     ports:
-      - "9157:9157"
+      - "9216:9216"
+    command: 
+      - '--mongodb.uri=mongodb://mongo:27017/${MONGO_INITDB_DATABASE}'
+      - '--mongodb.collstats-colls=Test.Listings'
+      - '--discovering-mode'
+      - '--mongodb.direct-connect'
+      - '--collect-all'
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/${MONGO_INITDB_DATABASE}
+    depends_on:
+      - mongo
 # ================================================================================================================
 # mongo-express nos proporciona una interfaz de usuario para administrar la base de datos mongodb.
 # ================================================================================================================
@@ -53,7 +80,15 @@ services:
       - "8081:8081"
     depends_on:
       - mongo  
-
+# ================================================================================================================
+# snmp_exporter nos permitira consumir la base de datos y obtener estadísticas para prometheus.
+# ================================================================================================================
+  snmp_exporter:
+    container_name: taskverse-snmp-exporter
+    image: prom/snmp-exporter
+    restart: always
+    ports:
+      - "9157:9157"
 # ================================================================================================================
 # keycloak es el servidor que nos permitirá implementar un sistema de autenticación.
 # ================================================================================================================
@@ -146,3 +181,4 @@ volumes:
   pgdata_keycloak:
   prometheus_data:
   grafana_data:
+  node_exporter_data:

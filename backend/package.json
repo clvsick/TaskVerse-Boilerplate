@@ -11,8 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@react-keycloak/web": "^3.4.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "keycloak-js": "^23.0.5",
     "mongoose": "^5.9.18",
     "prom-client": "^15.1.0"
   },
