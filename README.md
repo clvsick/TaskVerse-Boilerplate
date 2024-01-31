@@ -63,8 +63,30 @@ sequenceDiagram
     API -->> Usuario: Muestra un mensaje de éxito y la lista de tareas actualizada.
 ```
 
-Este otro diagrama de secuencia muestra la secuencia de nuestra
+Este otro diagrama de secuencia se muestra el funcionamiento del panel de monitoreo de la aplicación (Prometheus y Grafana). 
 
+```mermaid
+sequenceDiagram
+    title Prometheus/Grafana - Sequence Diagram
+    participant MongoDB
+    participant Frontend-Backend
+    participant PostgreSQL
+    participant Prometheus
+    participant Grafana
+
+    MongoDB->>+Prometheus: Exporta métricas
+    Frontend-Backend->>+Prometheus: Exporta métricas
+    PostgreSQL->>+Prometheus: Exporta métricas
+    Prometheus->>+MongoDB: Scraping HTTP para recopilar métricas
+    Prometheus->>+Frontend-Backend: Scraping HTTP para recopilar métricas
+    Prometheus->>+PostgreSQL: Scraping HTTP para recopilar métricas
+    Prometheus->>+Grafana: Configura Prometheus como fuente de datos
+    Grafana->>+Prometheus: Consulta métricas
+    Prometheus->>+Grafana: Responde con datos
+    Grafana->>+Prometheus: Configura alertas
+    Prometheus->>+Grafana: Envía datos para evaluación de alertas
+    Grafana->>+Usuario: Visualización de métricas y alertas
+```
 
 ## Criterios del proyecto.
 
