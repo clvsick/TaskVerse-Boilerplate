@@ -15,6 +15,13 @@ cd TaskVerse-Boilerplate
 docker compose up --build -d
 ```
 Una vez levando el proyecto, procederemos a ejecutar el script `update_all_dependencies.sh` para actualizar todas las dependencias de la aplicación. Hay que tener en cuenta que este script requiere de +x para poder ejecutarse.
+
+```
+cd TaskVerse-Boilerplate
+chmod +x update_all_dependencies.sh
+./update_all_dependencies.sh
+```
+
 ## Descripción: TaskVerse-Boilerplate
 Se trata de una implementación de CI/CD para automatizar las pruebas y el despliegue de mi aplicación la cual permite al usuario interactuar con la aplicación creando tareas y registrandolas en una base de datos MongoDB con la librería [mongoose](https://mongoosejs.com/) que se encarga de la persistencia de los datos. 
 
