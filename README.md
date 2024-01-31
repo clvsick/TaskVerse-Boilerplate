@@ -104,44 +104,30 @@ sequenceDiagram
 Para ello, hemos definido la siguiente estructura de carpetas y archivos: 
 
 ```
-TaskVerse-Boilerplate
+.TaskVerse-Boilerplate
 ├── README.md
 ├── backend
 │   ├── Dockerfile
 │   ├── models
-│   │   └── todo.js
+│   ├── node_modules
 │   ├── package-lock.json
 │   ├── package.json
 │   ├── routes
-│   │   ├── index.js
-│   │   └── todos.js
 │   └── server.js
 ├── docker-compose.yml
-└── frontend
-    ├── Dockerfile
-    ├── README.md
-    ├── package-lock.json
-    ├── package.json
-    ├── public
-    │   ├── favicon.ico
-    │   ├── index.html
-    │   ├── logo192.png
-    │   ├── logo512.png
-    │   ├── manifest.json
-    │   └── robots.txt
-    └── src
-        ├── App.css
-        ├── App.jsx
-        ├── App.test.js
-        ├── components
-        │   ├── home.jsx
-        │   ├── login.jsx
-        │   └── todo-form.jsx
-        ├── index.css
-        ├── index.js
-        ├── logo.svg
-        ├── reportWebVitals.js
-        └── setupTests.js
+├── frontend
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── build
+│   ├── node_modules
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── public
+│   └── src
+├── prometheus
+│   ├── mongodb
+│   └── prometheus.yml
+└── update_all_dependencies.sh
 ```
 ---
 
