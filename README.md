@@ -12,11 +12,6 @@ Para clonar el proyecto, se pueden usar los siguientes comandos:
 ```
 git clone https://github.com/alexanderfarias/TaskVerse-Boilerplate.git
 cd TaskVerse-Boilerplate
-cd backend
-npm install
-cd ../frontend
-npm install
-cd ..
 docker compose up --build -d
 ```
 Una vez levando el proyecto, procederemos a ejecutar el script `update_all_dependencies.sh` para actualizar todas las dependencias de la aplicación. Hay que tener en cuenta que este script requiere de +x para poder ejecutarse.
