@@ -27,7 +27,7 @@ chmod +x update_all_dependencies.sh
 - [X] La aplicación se encuentra dockerizada en diferentes contenedores necesarios para el funcionamiento de la aplicación (backend, frontend, base de datos, Keycloak, Grafana, Prometheus, etc).
 - [X] Emplea el orquestrador docker-compose para la construcción de la aplicación.
 - [X] Implementa un sistema automatizado de despliegue a través de pipelines con la herramienta Github Actions para construir, probar y desplegar la aplicación.
-- [X] Incluye un panel de monitoreo de la aplicación gracias a la herramienta [Prometheus](https://prometheus.io/) (Recoge las metricas) junto con [Grafana](https://grafana.com/) (Visualiza los datos mediante Dashboards).
+- [X] Incluye un panel de monitoreo de la aplicación gracias a la herramienta `[Prometheus](https://prometheus.io/)` (Recoge las metricas) junto con [Grafana](https://grafana.com/) (Visualiza los datos mediante Dashboards).
 - [X] Es posible probar la aplicación en diferentes entornos (local, cloud, etc.).
 - [x] Es posible configurar la base de datos y la autenticación para que funcione en diferentes entornos.
 
