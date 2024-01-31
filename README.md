@@ -3,6 +3,9 @@
 ## Introducción y objetivos:
 Con el objetivo de llevar a cabo todo lo aprendido durante este Bootcamp (DevOps - GeeksHubs Academy), se ha implementado esta aplicación de tareas llamada TaskVerse. En la que que he aplicado todos los conocimientos adquiridos durante este Bootcamp. Tanto conocimientos relacionados con el Backend como el Frontend. Además, se ha creado un diagrama de secuencia que muestra el flujo de la aplicación desde que se produce una interacción por parte del usuario introducciendo una tarea hasta que se registra en la base de datos. 
 
+También se ha llevado a cabo una implementación de CI/CD para automatizar las pruebas y el despliegue de la aplicación TaskVerse, los datos son registrados en una base de datos MongoDB con la librería [mongoose](https://mongoosejs.com/) que se encarga de la persistencia de los datos. 
+
+
 Aprovecho para agradecer tanto a mis compañeros del bootcamp como a los docentes de la GeeksHubs Academy. ❤
 
 
@@ -22,11 +25,6 @@ chmod +x update_all_dependencies.sh
 ./update_all_dependencies.sh
 ```
 
-## Descripción: TaskVerse-Boilerplate
-Se trata de una implementación de CI/CD para automatizar las pruebas y el despliegue de mi aplicación la cual permite al usuario interactuar con la aplicación creando tareas y registrandolas en una base de datos MongoDB con la librería [mongoose](https://mongoosejs.com/) que se encarga de la persistencia de los datos. 
-
-
----
 ## Diagrama: TaskVerse-Boilerplate
 Para poder ver mejor la secuencia de los pasos de la aplicación, he creado un diagrama de secuencia que muestra el flujo de la aplicación desde que el usuario introduce una tarea hasta que se registra en la base de datos. Pasando primero por la parte frontend donde el usuario introduce la tarea, y posteriormente por la parte backend donde se registra la tarea en la base de datos.
 
