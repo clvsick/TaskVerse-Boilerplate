@@ -169,6 +169,7 @@ services:
     volumes:
       - ./docker/grafana/data:/var/lib/grafana
     environment:
+      - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
     depends_on:
       - prometheus
