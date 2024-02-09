@@ -1,6 +1,9 @@
 #!/bin/bash
+
 # name of the script: update_all_dependencies.sh
 # set chmod +x update_all_dependencies.sh
+
+
 # Update the frontend
 cd ./frontend
 npm install
@@ -15,4 +18,4 @@ sudo chmod -R 755 $HOME/TaskVerse-Boilerplate/docker/grafana
 
 # Build the Project TaskVerse-Boilerplate
 cd $HOME/TaskVerse-Boilerplate
-docker-compose up  --build
+docker compose up --build -d
