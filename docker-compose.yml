@@ -167,7 +167,7 @@ services:
     ports:
       - 3002:3000
     volumes:
-      - grafana_data:/var/lib/grafana
+      - ./docker/grafana/data:/var/lib/grafana
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
     depends_on:

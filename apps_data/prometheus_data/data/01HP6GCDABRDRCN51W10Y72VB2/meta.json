@@ -1,0 +1,17 @@
+{
+	"ulid": "01HP6GCDABRDRCN51W10Y72VB2",
+	"minTime": 1707321600000,
+	"maxTime": 1707328800000,
+	"stats": {
+		"numSamples": 2071272,
+		"numSeries": 9094,
+		"numChunks": 24903
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01HP6GCDABRDRCN51W10Y72VB2"
+		]
+	},
+	"version": 1
+}
