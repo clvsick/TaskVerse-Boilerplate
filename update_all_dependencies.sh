@@ -5,7 +5,7 @@
 cd ./frontend
 npm install
 # Update the backend
-cd ./backend
+cd ../backend
 npm install
 
 # Change chown for Grafana
