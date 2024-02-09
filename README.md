@@ -7,18 +7,15 @@ Aprovecho para agradecer tanto a mis compañeros del bootcamp como a los docente
 
 ## Clonación: TaskVerse-Boilerplate
 
-Para clonar el proyecto, se pueden usar los siguientes comandos:
+Para poder hacer uso del proyecto, simplemente debe clonar el repositorio de Github, y una vez clonado, al abrir el proyecto de manera automatica se ejecutará el script `update_all_dependencies.sh`. Gracias a las instrucciones que tenemos en el fichero de `tasks.json` de  `.vscode/tasks.json`. Este script actualiza todas las dependencias de la aplicación, cambiará los permisos y propietarios de algunos de los archivos, y posteriormente construirá la aplicación.
+
+> [!Importante]
+> Puede que durante la ejecucción de este script `update_all_dependencies.sh`, requiera de la contraseña del usuario `root`. ya que hay comandos que se ejecutan con `sudo`.
+
 ```
 git clone https://github.com/alexanderfarias/TaskVerse-Boilerplate.git
 cd TaskVerse-Boilerplate
-docker compose up --build -d
-```
-Una vez levando el proyecto, procederemos a ejecutar el script `update_all_dependencies.sh` para actualizar todas las dependencias de la aplicación. Hay que tener en cuenta que este script requiere de +x para poder ejecutarse.
-
-```
-cd TaskVerse-Boilerplate
-chmod +x update_all_dependencies.sh
-./update_all_dependencies.sh
+code .
 ```
 ## Criterios del proyecto.
 
