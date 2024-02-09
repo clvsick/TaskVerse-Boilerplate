@@ -131,8 +131,11 @@ sequenceDiagram
 ```
 
 
-Para poder recoger las métricas necesarias para el monitoreo de las mismas, se han configurado los contenedores:
-    - `postgres-exporter`
-    - `mongo_exporter`
-    - `node_exporter`
-    - `snmp_exporter`
+Para poder recoger las métricas necesarias para el monitoreo de las mismas, se han configurado los contenedores: `postgres-exporter`, `mongo_exporter`, `node_exporter`, `snmp_exporter`.
+
+Estos exportadores de métricas nos permiten recopilar los datos de las diferentes aplicaciones que tenemos en nuestra aplicación y mostrarlas posteriormente en Grafana.
+
+> [!NOTE]
+> A continuación se muestra una imagen de la configuración de Prometheus. Y de las métricas recopiladas.
+
+![Prometheus1](https://imgur.com/a/qF3wFT6)
