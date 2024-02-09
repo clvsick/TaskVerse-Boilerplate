@@ -11,6 +11,7 @@ Para poder hacer uso del proyecto, simplemente debe clonar el repositorio de Git
 
 > [!IMPORTANT]
 > Puede que durante la ejecucción de este script `update_all_dependencies.sh`, requiera de la contraseña del usuario `root`. ya que hay comandos que se ejecutan con `sudo`.
+![2024-02-0918-54-14-ezgif com-crop](https://github.com/clvsick/TaskVerse-Boilerplate/assets/93092117/0f4986ef-757e-429d-a942-2aa64f912a10)
 
 ```
 git clone https://github.com/alexanderfarias/TaskVerse-Boilerplate.git
