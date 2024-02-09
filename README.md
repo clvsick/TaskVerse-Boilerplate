@@ -70,31 +70,6 @@ sequenceDiagram
     Usuario -->> API: Recibe la respuesta.
     API -->> Usuario: Muestra un mensaje de éxito y la lista de tareas actualizada.
 ```
-
-Este otro diagrama de secuencia se muestra el funcionamiento del panel de monitoreo de la aplicación (Prometheus y Grafana). 
-
-```mermaid
-sequenceDiagram
-    title Prometheus/Grafana - Sequence Diagram
-    participant MongoDB
-    participant Frontend-Backend
-    participant PostgreSQL
-    participant Prometheus
-    participant Grafana
-
-    MongoDB->>+Prometheus: Exporta métricas
-    Frontend-Backend->>+Prometheus: Exporta métricas
-    PostgreSQL->>+Prometheus: Exporta métricas
-    Prometheus->>+MongoDB: Scraping HTTP para recopilar métricas
-    Prometheus->>+Frontend-Backend: Scraping HTTP para recopilar métricas
-    Prometheus->>+PostgreSQL: Scraping HTTP para recopilar métricas
-    Prometheus->>+Grafana: Configura Prometheus como fuente de datos
-    Grafana->>+Prometheus: Consulta métricas
-    Prometheus->>+Grafana: Responde con datos
-    Grafana->>+Prometheus: Configura alertas
-    Prometheus->>+Grafana: Envía datos para evaluación de alertas
-    Grafana->>+Usuario: Visualización de métricas y alertas
-```
 ## Estructura: TaskVerse-Boilerplate
 
 Para ello, hemos definido la siguiente estructura de carpetas y archivos: 
@@ -124,5 +99,38 @@ Para ello, hemos definido la siguiente estructura de carpetas y archivos:
 │   └── prometheus.yml
 └── update_all_dependencies.sh
 ```
----
+# Uso de Prometheus y Grafana
 
+La instalación de estas dos aplicaciones se han llevado a cabo en el nuestro archivo de `docker-compose.yml`. En ella se ha definido tanto la configuración de Prometheus como la de Grafana.
+
+En este diagrama de secuencia se muestra el funcionamiento del panel de monitoreo de la aplicación (Prometheus y Grafana). 
+
+```mermaid
+sequenceDiagram
+    title Prometheus/Grafana - Sequence Diagram
+    participant MongoDB
+    participant Frontend-Backend
+    participant PostgreSQL
+    participant Prometheus
+    participant Grafana
+
+    MongoDB->>+Prometheus: Exporta métricas
+    Frontend-Backend->>+Prometheus: Exporta métricas
+    PostgreSQL->>+Prometheus: Exporta métricas
+    Prometheus->>+MongoDB: Scraping HTTP para recopilar métricas
+    Prometheus->>+Frontend-Backend: Scraping HTTP para recopilar métricas
+    Prometheus->>+PostgreSQL: Scraping HTTP para recopilar métricas
+    Prometheus->>+Grafana: Configura Prometheus como fuente de datos
+    Grafana->>+Prometheus: Consulta métricas
+    Prometheus->>+Grafana: Responde con datos
+    Grafana->>+Prometheus: Configura alertas
+    Prometheus->>+Grafana: Envía datos para evaluación de alertas
+    Grafana->>+Usuario: Visualización de métricas y alertas
+```
+
+
+Para poder recoger las métricas necesarias para el monitoreo de las mismas, se han configurado los contenedores:
+    - `postgres-exporter`
+    - `mongo_exporter`
+    - `node_exporter`
+    - `snmp_exporter`
