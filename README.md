@@ -9,7 +9,7 @@ Aprovecho para agradecer tanto a mis compañeros del bootcamp como a los docente
 
 Para poder hacer uso del proyecto, simplemente debe clonar el repositorio de Github, y una vez clonado, al abrir el proyecto de manera automatica se ejecutará el script `update_all_dependencies.sh`. Gracias a las instrucciones que tenemos en el fichero de `tasks.json` de  `.vscode/tasks.json`. Este script actualiza todas las dependencias de la aplicación, cambiará los permisos y propietarios de algunos de los archivos, y posteriormente construirá la aplicación.
 
-> [!Importante]
+> [!IMPORTANT]
 > Puede que durante la ejecucción de este script `update_all_dependencies.sh`, requiera de la contraseña del usuario `root`. ya que hay comandos que se ejecutan con `sudo`.
 
 ```
