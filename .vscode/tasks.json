@@ -2,7 +2,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Actualizar todas las dependencias",
+            "label": "Actualizar todas las dependencias y despliegar el proyecto Taskverse-Boilerplate",
             "type": "shell",
             "command": "./update_all_dependencies.sh",
             "group": {
