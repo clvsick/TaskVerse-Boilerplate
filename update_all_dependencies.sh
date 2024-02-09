@@ -7,3 +7,8 @@ npm install
 # Update the backend
 cd ./backend
 npm install
+
+# Change chown for Grafana
+sudo chown -R 472:472 ./docker/grafana/data
+# Change chmod for Grafana
+sudo chmod -R 755 ./docker/grafana

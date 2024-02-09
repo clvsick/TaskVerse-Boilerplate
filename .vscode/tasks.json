@@ -16,24 +16,6 @@
             "runOptions": {
                 "runOn": "folderOpen"
             }
-        },
-        {
-            "label": "Cambiar propietario de datos de Grafana",
-            "type": "shell",
-            "command": "sudo chown -R 472:472 ./docker/grafana/data",
-            "presentation": {
-                "reveal": "silent"
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Cambiar permisos de directorios de Grafana",
-            "type": "shell",
-            "command": "sudo chmod -R 775 ./docker/grafana/",
-            "presentation": {
-                "reveal": "silent"
-            },
-            "problemMatcher": []
         }
     ]
 }
