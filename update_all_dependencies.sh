@@ -12,3 +12,7 @@ npm install
 sudo chown -R 472:472 $HOME/TaskVerse-Boilerplate/docker/grafana/data
 # Change chmod for Grafana
 sudo chmod -R 755 $HOME/TaskVerse-Boilerplate/docker/grafana
+
+# Build the Project TaskVerse-Boilerplate
+cd $HOME/TaskVerse-Boilerplate
+docker-compose up  --build
