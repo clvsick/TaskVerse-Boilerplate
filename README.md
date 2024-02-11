@@ -144,6 +144,6 @@ Para poder recoger las métricas necesarias para el monitoreo de las mismas, se 
 
 Estos exportadores de métricas nos permiten recopilar los datos de las diferentes aplicaciones que tenemos en nuestra aplicación y mostrarlas posteriormente en Grafana.
 
-> [!NOTA]
+> [!NOTE]
 > A continuación se muestra una imagen de la configuración de Prometheus. Y de las métricas recopiladas.
 > https://i.imgur.com/nVAjxlZ.png 
