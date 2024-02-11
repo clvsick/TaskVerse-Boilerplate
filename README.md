@@ -147,6 +147,4 @@ Estos exportadores de métricas nos permiten recopilar los datos de las diferent
 > [!NOTE]
 > A continuación se muestra una imagen de la configuración de Prometheus. Y de las métricas recopiladas.
 
-<p align="center">
-  <img src="https://imgur.com/a/qF3wFT6.webp" alt="Grafana Dashboard PostgreSQL">
-</p>
+    - https://imgur.com/a/qF3wFT6.webp
