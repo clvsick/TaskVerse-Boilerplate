@@ -156,4 +156,5 @@ Estos exportadores de métricas nos permiten recopilar los datos de las diferent
 
 > [!NOTE]
 > En este otro enlace se muestra una imagen del Dashboard de las métricas recopiladas por Node tanto del backend como del frontend.
-> https://i.imgur.com/xaCUz3S.png
+> 
+> https://i.imgur.com/ikSUXzO.png
