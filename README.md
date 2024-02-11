@@ -6,9 +6,6 @@ Con el objetivo de llevar a cabo todo lo aprendido durante este Bootcamp (DevOps
 Aprovecho para agradecer tanto a mis compañeros del bootcamp como a los docentes de la GeeksHubs Academy. ❤
 
 ## Clonación: TaskVerse-Boilerplate
-
-<<<<<<< HEAD
-<<<<<<< HEAD
 Para poder hacer uso del proyecto, simplemente debe clonar el repositorio de Github, y una vez clonado, al abrir el proyecto de manera automatica se ejecutará el script `update_all_dependencies.sh`. Gracias a las instrucciones que tenemos en el fichero de `tasks.json` de  `.vscode/tasks.json`. Este script actualiza todas las dependencias de la aplicación, cambiará los permisos y propietarios de algunos de los archivos, y posteriormente construirá la aplicación.
 
 > [!IMPORTANT]
@@ -16,12 +13,7 @@ Para poder hacer uso del proyecto, simplemente debe clonar el repositorio de Git
 
 ![2024-02-0918-54-14-ezgif com-crop](https://github.com/clvsick/TaskVerse-Boilerplate/assets/93092117/0f4986ef-757e-429d-a942-2aa64f912a10)
 
-=======
 Para clonar el proyecto, se pueden usar los siguientes comandos:
->>>>>>> parent of 53612b9 (:wrench: Update)
-=======
-Para clonar el proyecto, se pueden usar los siguientes comandos:
->>>>>>> parent of 53612b9 (:wrench: Update)
 ```
 git clone https://github.com/alexanderfarias/TaskVerse-Boilerplate.git
 cd TaskVerse-Boilerplate
@@ -35,6 +27,8 @@ chmod +x update_all_dependencies.sh
 ./update_all_dependencies.sh
 ```
 ## Criterios del proyecto.
+
+- Se han cumplido los siguientes criterios para el proyecto:
 
 - [X] La aplicación ha sido desarrollada con Node.js y ExpressJS.
 - [X] Ofrece un sistema de integración continua (Haciendo uso del repositorio de Github)
