@@ -169,3 +169,4 @@ Estos exportadores de métricas nos permiten recopilar los datos de las diferent
 > [!NOTE]
 > En este enlace se muestra una imagen de la configuración de Github Actions.
 > https://i.imgur.com/7X8T57c.png
+> https://i.imgur.com/L4DyEDX.png
