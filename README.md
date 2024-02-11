@@ -158,3 +158,14 @@ Estos exportadores de métricas nos permiten recopilar los datos de las diferent
 > En este otro enlace se muestra una imagen del Dashboard de las métricas recopiladas por Node tanto del backend como del frontend.
 > 
 > https://i.imgur.com/ikSUXzO.png
+
+
+
+## Github Actions - CI/CD Implementado.
+
+- Este archivo .github/workflows contiene la configuración necesaria para automatizar el proceso de despliegue de una aplicación cada vez que se realiza un push en la rama master del repositorio.
+- El flujo de trabajo definido comienza con el evento `push` en la rama `master`. Cuando se detecta este evento, comienza el despliegue del job `deploy`. Y despliega la aplicación.
+
+> [!NOTE]
+> En este enlace se muestra una imagen de la configuración de Github Actions.
+> https://i.imgur.com/7X8T57c.png
