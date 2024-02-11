@@ -147,3 +147,13 @@ Estos exportadores de métricas nos permiten recopilar los datos de las diferent
 > [!NOTE]
 > A continuación se muestra una imagen de la configuración de Prometheus. Y de las métricas recopiladas.
 > https://i.imgur.com/nVAjxlZ.png 
+
+
+> [!NOTE]
+> En este siguiente enlace se muestra una imagen del Dashboard de los datos recopilados por PostgreSQL.
+> https://i.imgur.com/ikSUXzO.png
+
+
+> [!NOTE]
+> En este otro enlace se muestra una imagen del Dashboard de las métricas recopiladas por Node tanto del backend como del frontend.
+> https://i.imgur.com/xaCUz3S.png
