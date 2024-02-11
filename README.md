@@ -147,4 +147,4 @@ Estos exportadores de métricas nos permiten recopilar los datos de las diferent
 > [!NOTE]
 > A continuación se muestra una imagen de la configuración de Prometheus. Y de las métricas recopiladas.
 
-    - https://imgur.com/a/qF3wFT6.webp
+https://i.imgur.com/nVAjxlZ.png
