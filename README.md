@@ -9,17 +9,17 @@ Aprovecho para agradecer tanto a mis compañeros del bootcamp como a los docente
 Para poder hacer uso del proyecto, simplemente debe clonar el repositorio de Github, y una vez clonado, al abrir el proyecto de manera automatica se ejecutará el script `update_all_dependencies.sh`. Gracias a las instrucciones que tenemos en el fichero de `tasks.json` de  `.vscode/tasks.json`. Este script actualiza todas las dependencias de la aplicación, cambiará los permisos y propietarios de algunos de los archivos, y posteriormente construirá la aplicación.
 
 > [!IMPORTANT]
-> Puede que durante la ejecucción de este script `update_all_dependencies.sh`, requiera de la contraseña del usuario `root`. ya que hay comandos que se ejecutan con `sudo`.
+> Puede que durante la ejecucción de este script `update_all_dependencies.sh`, requiera de la contraseña del usuario `root`.
 
 ![2024-02-0918-54-14-ezgif com-crop](https://github.com/clvsick/TaskVerse-Boilerplate/assets/93092117/0f4986ef-757e-429d-a942-2aa64f912a10)
 
 Para clonar el proyecto, se pueden usar los siguientes comandos:
 ```
-git clone https://github.com/alexanderfarias/TaskVerse-Boilerplate.git
+git https://github.com/clvsick/TaskVerse-Boilerplate.git
 cd TaskVerse-Boilerplate
 docker compose up --build -d
 ```
-Una vez levando el proyecto, procederemos a ejecutar el script `update_all_dependencies.sh` para actualizar todas las dependencias de la aplicación. Hay que tener en cuenta que este script requiere de +x para poder ejecutarse.
+Una vez levando el proyecto, procederemos a ejecutar el script `update_all_dependencies.sh` para actualizar todas las dependencias de la aplicación.
 
 ```
 cd TaskVerse-Boilerplate
@@ -35,7 +35,7 @@ chmod +x update_all_dependencies.sh
 - [X] La aplicación se encuentra dockerizada en diferentes contenedores necesarios para el funcionamiento de la aplicación (backend, frontend, base de datos, Keycloak, Grafana, Prometheus, etc).
 - [X] Emplea el orquestrador docker-compose para la construcción de la aplicación.
 - [X] Implementa un sistema automatizado de despliegue a través de pipelines con la herramienta Github Actions para construir, probar y desplegar la aplicación.
-- [X] Incluye un panel de monitoreo de la aplicación gracias a la herramienta `[Prometheus](https://prometheus.io/)` (Recoge las metricas) junto con [Grafana](https://grafana.com/) (Visualiza los datos mediante Dashboards).
+- [X] Incluye un panel de monitoreo de la aplicación gracias a la herramienta [Prometheus](https://prometheus.io/) (Recoge las metricas) junto con [Grafana](https://grafana.com/) (Visualiza los datos mediante Dashboards).
 - [X] Es posible probar la aplicación en diferentes entornos (local, cloud, etc.).
 - [x] Es posible configurar la base de datos y la autenticación para que funcione en diferentes entornos.
 
